@@ -25,11 +25,17 @@
         <li><a>KOIKATSU</a></li>  
         <li><a>GOURMET</a></li>
       </ul>
+      <%= image_tag 'banner.jpg', id: 'uu' %>
     </card>
     <card class="search-card">
       <h4>Search</h4>
-      <input class="u-full-width" type="text">
-      <a class='button button-primary u-full-width'>Search</a>
+      <%= form_tag Event, :method => 'get' do %> <%#　projects_pathはモデル名で読みかえること %>
+      <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+      </p>
+      <%= image_tag 'mm.gif', id: 'uu' %>
+      <% end %>
     </card>
   </sidebar>
 </div>

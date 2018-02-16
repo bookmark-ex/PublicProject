@@ -10,4 +10,10 @@ class Event < ApplicationRecord
   validates_each :start_at do |record, attr, value|
     record.errors.add(attr, 'must be at least a week from now') if value < Time.current + 1.week
   end
+  
+  def self.search(search) #self.でクラスメソッドとしている
+  # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+  Event.where(['(title || location) LIKE ?', "%#{search}%"])
+  end
+  
 end
